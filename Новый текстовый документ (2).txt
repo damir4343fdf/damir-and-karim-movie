@@ -1,0 +1,18 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv("IMDB-Movie-Data.csv")
+
+columns_of_interest = ['Rank', 'Title', 'Genre', 'Description', 'Director', 'Actors', 'Year', 'Runtime (Minutes)', 'Rating', 'Votes', 'Revenue (Millions)', 'Metascore']
+
+selected_data = data[columns_of_interest]
+
+selected_movie = selected_data[selected_data["Title"] == "Guardians of the Galaxy"]
+
+plt.figure(figsize=(8, 6))
+plt.hist(selected_movie["Rating"], bins=10, color="skyblue", edgecolor="black")
+plt.xlabel("Рейтинг")
+plt.ylabel("Количество фильмов")
+plt.title("Распределение оценок для фильма 'Guardians of the Galaxy'")
+plt.grid(axis="y")
+plt.show()
